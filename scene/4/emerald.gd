@@ -1,0 +1,18 @@
+extends "res://scene/4/gem.gd"
+
+
+@onready var power = $HBox/Power
+
+
+func init_basic_setting() -> void:
+	super.init_basic_setting()
+	init_tokens()
+
+
+func init_tokens() -> void:
+	var input = {}
+	input.proprietor = self
+	input.type = "stone"
+	input.subtype = "power"
+	input.value = 10
+	power.set_attributes(input)

@@ -27,17 +27,19 @@ func init_arr() -> void:
 	arr.bag = ["amulet", "ring", "gem"]
 	arr.gem = ["emerald", "amethyst", "sapphire", "topaz", "pearl"]
 	arr.page = ["spell", "mantra"]
+	arr.offense = ["whip", "hammer", "spear"]
+	arr.defense = ["parry", "block", "dodge"]
 	arr.essence = ["lightning", "fire", "ice", "poison", "bone", "blood", "light", "void", "darkness"]
 
 
 func init_num() -> void:
 	num.index = {}
-	num.index.stone = 0
+	num.index.gem = 0
 
 
 func init_dict() -> void:
 	init_neighbor()
-	init_stone()
+	init_gem()
 	init_season()
 	init_area()
 	init_font()
@@ -89,17 +91,44 @@ func init_neighbor() -> void:
 	]
 
 
-func init_stone() -> void:
-	dict.stone = {}
-	dict.stone.type = {}
-	dict.stone.type["gold"] = {}
-	dict.stone.type["gold"][1] = 5
-	dict.stone.type["gold"][2] = 3
-	dict.stone.type["gold"][3] = 1
+func init_gem() -> void:
+	var n = 3
+	var m = n * 2
+	dict.gem = {}
+	var counts = {}
+	counts["topaz"] = Vector2(6, n)
+	counts["pearl"] = Vector2(arr.essence.size(), n)
+	counts["emerald"] = Vector2(10, 1)
+	counts["amethyst"] = Vector2(arr.offense.size(), m)
+	counts["sapphire"] = Vector2(arr.defense.size(), m)
 	
-	dict.stone.type["power"] = {}
-	dict.stone.type["power"][1] = 2
-	dict.stone.type["power"][2] = 1
+	for gem in arr.gem:
+		dict.gem[gem] = {}
+		var count = counts[gem]
+		
+		for _i in count.x:
+			var description = {}
+			description.type = gem
+		
+			match gem:
+				"topaz":
+					description.charge = _i + 1
+					description.capacity = 1
+				"pearl":
+					description.essence = arr.essence[_i]
+					description.capacity = 1
+				"emerald":
+					description.power = _i + 5
+				"amethyst":
+					description.seal = arr.offense[_i]
+					description.capacity = 3
+				"sapphire":
+					description.seal = arr.defense[_i]
+					description.capacity = 3
+			
+			for _j in count.y:
+				dict.gem[gem][description] = [_j]
+	
 
 
 func init_season() -> void:
@@ -129,7 +158,7 @@ func init_font():
 	dict.font = {}
 	dict.font.size = {}
 	dict.font.size["resource"] = 24
-	dict.font.size["stone"] = 24
+	dict.font.size["gem"] = 24
 	dict.font.size["season"] = 18
 	dict.font.size["phase"] = 18
 	dict.font.size["moon"] = 18
@@ -167,7 +196,7 @@ func init_scene() -> void:
 	
 	scene.bag = load("res://scene/3/bag.tscn")
 	
-	#scene.stone = load("res://scene/4/stone.tscn")
+	#scene.gem = load("res://scene/4/gem.tscn")
 	for gem in arr.gem:
 		scene[gem] = load("res://scene/4/" + gem + ".tscn")
 	
@@ -179,8 +208,8 @@ func init_vec():
 	vec.size.sixteen = Vector2(16, 16)
 	vec.size.number = Vector2(vec.size.sixteen)
 	
-	vec.size.token = vec.size.sixteen * 3
-	vec.size.stone = Vector2(vec.size.token.x, vec.size.token.y)
+	vec.size.token = vec.size.sixteen * 2.5
+	vec.size.gem = Vector2(vec.size.token.x, vec.size.token.y)
 	vec.size.bag = Vector2()#vec.size.token.x * 6, vec.size.token.y * 5)
 	
 	init_window_size()
@@ -196,10 +225,10 @@ func init_window_size():
 func init_color():
 	var h = 360.0
 	
-	color.stone = {}
-	color.stone.selected = {}
-	color.stone.selected[true] = Color.from_hsv(160 / h, 0.4, 0.7)
-	color.stone.selected[false] = Color.from_hsv(60 / h, 0.2, 0.9)
+	color.gem = {}
+	color.gem.selected = {}
+	color.gem.selected[true] = Color.from_hsv(160 / h, 0.4, 0.7)
+	color.gem.selected[false] = Color.from_hsv(60 / h, 0.2, 0.9)
 
 
 func save(path_: String, data_: String):

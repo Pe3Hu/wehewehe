@@ -2,7 +2,7 @@ extends MarginContainer
 
 
 #region vars
-@onready var stones = $Stones
+@onready var gems = $Gems
 
 var bag = null
 var type = null
@@ -15,34 +15,34 @@ func set_attributes(input_: Dictionary) -> void:
 	type = input_.type
 
 
-func reshuffle_all_stones() -> void:
-	var _stones = []
+func reshuffle_all_gems() -> void:
+	var _gems = []
 	
-	while stones.get_child_count() > 0:
-		var stone = stones.get_child(0)
-		stones.remove_child(stone)
-		_stones.append(stone)
+	while gems.get_child_count() > 0:
+		var gem = gems.get_child(0)
+		gems.remove_child(gem)
+		_gems.append(gem)
 	
-	_stones.shuffle()
+	_gems.shuffle()
 	
-	for stone in _stones:
-		stones.add_child(stone)
+	for gem in _gems:
+		gems.add_child(gem)
 
 
-func advance_random_stone() -> void:
+func advance_random_gem() -> void:
 	refill_check()
-	var stone = stones.get_children().pick_random()
-	stone.advance_area()
+	var gem = gems.get_children().pick_random()
+	gem.advance_area()
 
 
-func advance_all_stones() -> void:
-	while stones.get_child_count() > 0:
-		advance_random_stone()
+func advance_all_gems() -> void:
+	while gems.get_child_count() > 0:
+		advance_random_gem()
 
 
 func refill_check() -> void:
-	if stones.get_child_count() == 0:
+	if gems.get_child_count() == 0:
 		var donor = Global.dict.area.prior[type]
-		var stonestack = bag.get(donor)
-		stonestack.advance_all_stones()
+		var gemstack = bag.get(donor)
+		gemstack.advance_all_gems()
 #endregion

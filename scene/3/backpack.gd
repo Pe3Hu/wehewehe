@@ -6,6 +6,7 @@ extends MarginContainer
 
 var gems = {}
 var god = null
+var grimoire = null
 #endregion
 
 
@@ -17,6 +18,7 @@ func set_attributes(input_: Dictionary) -> void:
 
 
 func init_basic_setting() -> void:
+	grimoire = god.grimoire
 	init_bags()
 
 

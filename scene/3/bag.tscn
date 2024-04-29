@@ -27,22 +27,22 @@ visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_io3fl")
 
-[node name="Stones" type="VBoxContainer" parent="."]
+[node name="Gems" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Available" parent="Stones" instance=ExtResource("2_d5e7b")]
+[node name="Available" parent="Gems" instance=ExtResource("2_d5e7b")]
 visible = false
 layout_mode = 2
 
-[node name="Hand" parent="Stones" instance=ExtResource("2_d5e7b")]
+[node name="Hand" parent="Gems" instance=ExtResource("2_d5e7b")]
 layout_mode = 2
 
-[node name="Discharged" parent="Stones" instance=ExtResource("2_d5e7b")]
+[node name="Discharged" parent="Gems" instance=ExtResource("2_d5e7b")]
 visible = false
 layout_mode = 2
 
-[node name="Broken" parent="Stones" instance=ExtResource("2_d5e7b")]
+[node name="Broken" parent="Gems" instance=ExtResource("2_d5e7b")]
 visible = false
 layout_mode = 2

@@ -14,12 +14,10 @@ func init_tokens() -> void:
 	var input = {}
 	input.proprietor = self
 	input.type = "seal"
-	input.subtype = "spear"
+	input.subtype = description.seal
 	seal.set_attributes(input)
 	
-	capacity = 2
-	
-	for _i in capacity:
+	for _i in description.capacity:
 		input.type = "essence"
 		input.subtype = "empty"
 		

@@ -14,5 +14,5 @@ func init_tokens() -> void:
 	input.proprietor = self
 	input.type = "stone"
 	input.subtype = "power"
-	input.value = 10
+	input.value = description.power
 	power.set_attributes(input)

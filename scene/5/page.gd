@@ -22,5 +22,12 @@ func init_basic_setting() -> void:
 
 
 func init_paragraphs() -> void:
-	pass
+	for _i in range(1, 7, 1):
+		var input = {}
+		input.page = self
+		input.values = [_i, _i]
+	
+		var paragraph = Global.scene.paragraph.instantiate()
+		paragraphs.add_child(paragraph)
+		paragraph.set_attributes(input)
 #endregion

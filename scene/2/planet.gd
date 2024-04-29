@@ -40,9 +40,14 @@ func start_race() -> void:
 	init_gods_opponents()
 	roll_gods_order()
 	
+	#for god in gods:
+	#	for gem in Global.arr.gem:
+	
 	for god in gods:
-		for gem in Global.arr.gem:
-			god.backpack.gems[gem].refill_hand()
+		god.backpack.gems.topaz.refill_hand()
+	
+	for god in gods:
+		god.grimoire.spread_topazes()
 	
 	#moon.follow_phase()
 

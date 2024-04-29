@@ -21,8 +21,8 @@ func set_attributes(input_: Dictionary) -> void:
 func init_basic_setting() -> void:
 	var input = {}
 	input.god = self
-	backpack.set_attributes(input)
 	grimoire.set_attributes(input)
+	backpack.set_attributes(input)
 #endregion
 
 

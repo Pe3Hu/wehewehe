@@ -26,7 +26,7 @@ visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7paps")
 
-[node name="Stones" type="HBoxContainer" parent="."]
+[node name="Gems" type="HBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 5
 alignment = 1

@@ -27,13 +27,33 @@ visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7paps")
 
-[node name="Pages" type="HBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Spells" parent="Pages" instance=ExtResource("2_m30x8")]
+[node name="Pages" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Available" type="VBoxContainer" parent="VBox/Pages"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Spells" parent="VBox/Pages" instance=ExtResource("2_m30x8")]
 layout_mode = 2
 
-[node name="Mantras" parent="Pages" instance=ExtResource("2_m30x8")]
+[node name="Mantras" parent="VBox/Pages" instance=ExtResource("2_m30x8")]
 layout_mode = 2
+
+[node name="Discharged" type="VBoxContainer" parent="VBox/Pages"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Threats" type="VBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
